@@ -1,23 +1,2 @@
-"""任务 1：把程序文本切成词（token）。
-
-输入：一段 mini-Scheme 程序文本，例如 "(+ 1 2)"。
-输出：词的列表，例如 ['(', '+', '1', '2', ')']。
-
-规则：
-- '(' 和 ')' 单独成词。
-- 空白字符（空格、换行、制表符）是分隔符，本身不产生词。
-- 双引号包起来的部分是一个字符串词，要**包含双引号本身**；引号内可以
-  出现空格；反斜杠 \\ 后跟一个字符表示转义（扫描时跳过转义字符）。
-- 其余连续字符是一个原子词，例如 42、#t、foo、'x。
-
-要求：函数名是 tokenize(program)，返回 list[str]。用索引扫描字符串即可，
-不要用正则。
-
-依赖：无。
-"""
-
-# TODO: 把上面的 docstring 交给 AI，让它实现 tokenize，然后跑测试验证。
-
-
 def tokenize(program):
-    raise NotImplementedError("TODO: 实现 tokenize")
+    raise NotImplementedError("tokenize")

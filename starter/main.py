@@ -1,9 +1,3 @@
-"""命令行入口（已写好，不用改）。
-
-读取 .scm 文件（无参数时读标准输入），按顺序求值每个顶层表达式，
-把每个非 None 的结果打印成一行。约定见 spec.md 第 2 节。
-"""
-
 import sys
 
 from parser import parse

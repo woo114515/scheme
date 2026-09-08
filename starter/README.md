@@ -12,10 +12,10 @@ parser.parse                    → 表达式（嵌套的 Python 数据）
    ↓
 evaluator.evaluate              → 值（查 environment.Env、调 stdlib 内置过程、parser.to_chain 处理引用）
    ↓
-printer.to_str                  → 打印成规范第 5 节的写法
+printer.to_str                  → 打印成规范第 8 节的写法
 ```
 
-每个模块的职责和接口都写在该文件的 docstring 里。**把整个文件的 docstring 复制给 AI，让它实现，然后跑测试验证。**
+每个模块的函数名已经定义好，这是模块的边界。函数要做什么、语言有哪些规则，都在 `../spec.md` 里。把函数名和 spec 里的规则讲给 AI，让它实现，再跑测试验证。
 
 ## 建议完成顺序（自底向上）
 
@@ -41,6 +41,6 @@ python3 tests/run_tests.py python3 starter/main.py
 
 ## 评分关注
 
-- **模块化**：每个文件只做一件事，接口按 docstring 约定；不把所有代码堆进一个文件。
+- **模块化**：每个文件只做一件事，接口按函数名划分；不把所有代码堆进一个文件。
 - **能否独立验证**：AI 每改完一个模块，就运行测试确认，而不是全部写完再测。
 - **迭代能力**：报错时能否描述现象、看懂输出差异并让 AI 修正。

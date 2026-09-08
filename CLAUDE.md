@@ -14,7 +14,7 @@ Two assessment dimensions: functional correctness (12 acceptance case groups) an
 
 - `spec.md` — the mini-Scheme language spec, student-facing: prefix-notation primer, per-form evaluation order, cons-chain explanation, recursion intro, debugging guide, CLI/printing contracts, out-of-scope items. The single source of truth for what a passing student interpreter must do.
 - `reference/` — instructor's modular reference interpreter (Python 3). Public API per module mirrors the starter: `tokenizer.tokenize`, `parser.parse`/`sym`/`to_chain`, `environment.Env`/`Procedure`, `printer.to_str`, `stdlib.build_env`, `evaluator.evaluate`/`apply`, `main`. Must pass all acceptance tests.
-- `starter/` — the student skeleton: same module layout, contract docstrings (doubling as vibe-coding prompts), `raise NotImplementedError` stubs, complete `main.py`, and `README.md` with the pipeline map and bottom-up completion order. **Keep the starter's module boundaries in sync with `reference/`** when the subset or architecture changes.
+- `starter/` — the student skeleton: same module layout as `reference/`, bare `raise NotImplementedError` stubs **with no comments or docstrings** (deliberate: students derive requirements from `spec.md` and the tests, not in-code prompts), complete `main.py`, and `README.md` with the pipeline map and bottom-up completion order. **Keep the starter's module boundaries in sync with `reference/`** when the subset or architecture changes.
 - `tests/run_tests.py` — acceptance runner usable against any interpreter command; `tests/cases/*.scm` with matching `*.out` expected outputs.
 - When introducing a new top-level directory, document its purpose here.
 
