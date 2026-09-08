@@ -1,0 +1,7 @@
+(define (make-adder n) (lambda (x) (+ x n)))
+(define add3 (make-adder 3))
+(add3 5)
+((make-adder 10) 7)
+(define (compose f g) (lambda (x) (f (g x))))
+(define inc (lambda (x) (+ x 1)))
+((compose inc inc) 5)

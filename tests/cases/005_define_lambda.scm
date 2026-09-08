@@ -1,0 +1,7 @@
+(define square (lambda (x) (* x x)))
+(square 7)
+(square (square 2))
+(define (cube x) (* x x x))
+(cube 3)
+(define pi 3)
+(+ pi 1)

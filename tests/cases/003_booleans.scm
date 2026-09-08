@@ -1,0 +1,8 @@
+(and #t #f)
+(or #f #t)
+(not #f)
+(and #f (/ 1 0))
+(or #t (/ 1 0))
+(and)
+(or)
+(not (equal? '(1) '(2)))

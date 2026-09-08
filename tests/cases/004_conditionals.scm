@@ -1,0 +1,6 @@
+(if (> 3 2) 'yes 'no)
+(if #f 'bad 'good)
+(cond ((= 1 2) 'a) ((= 2 2) 'b) (else 'c))
+(cond (else 'd))
+(cond ((> 2 3)) (else 42))
+(if (null? '()) 1 2)
