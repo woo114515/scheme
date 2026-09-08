@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Build dist/autograder.pyz — the packaged, student-facing autograder.
+"""Build starter/autograder.pyz — the packaged, student-facing autograder.
 
 Embeds tests/cases/*.scm and their expected outputs (base64-encoded) in
 a zipapp. The packaged grader never prints the inputs or the expected
 outputs, so students can self-check without being able to program to
 the autograder. Official grading uses tests/cases_hidden/ instead (see
-`make grade`), which students never receive.
+`make grade`), which students never receive. The pyz is committed to
+the separate starter repo — rebuild and commit it after changing
+tests/cases/.
 
 Usage: python3 tools/build_autograder.py   (or `make autograder`)
 """
@@ -107,9 +109,7 @@ def main():
             fh.write("CASES = " + repr(encoded) + "\n")
         with open(os.path.join(tmp, "__main__.py"), "w", encoding="utf-8") as fh:
             fh.write(RUNNER)
-        dist_dir = os.path.join(ROOT, "dist")
-        os.makedirs(dist_dir, exist_ok=True)
-        out = os.path.join(dist_dir, "autograder.pyz")
+        out = os.path.join(ROOT, "starter", "autograder.pyz")
         zipapp.create_archive(tmp, out, interpreter="/usr/bin/env python3")
     print(f"built {out} with {len(cases)} case groups")
 
