@@ -1,0 +1,8 @@
+(define (apply-twice f x) (f (f x)))
+(apply-twice (lambda (x) (* x x)) 3)
+(define (filter pred xs)
+  (cond ((null? xs) '())
+        ((pred (car xs)) (cons (car xs) (filter pred (cdr xs))))
+        (else (filter pred (cdr xs)))))
+(filter even? '(1 2 3 4 5 6))
+(filter (lambda (x) (> x 10)) '(5 15 8 20))

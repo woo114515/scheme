@@ -311,9 +311,9 @@ mini-Scheme 里列表不是"装很多格子的盒子"，而是**一串点对**�
 
 ## 12. 验收测试
 
-- 用例位于 `tests/cases/`，每个 `NNN_name.scm` 配一个 `NNN_name.out`（期望输出，逐字节精确匹配）。
-- 测试你的解释器：`python3 tests/run_tests.py python3 starter/main.py`。
-- 测试教师参考实现：`make test`（即 `python3 tests/run_tests.py python3 reference/main.py`）。
+- 验收用例共 12 组，难度递增，打包在评分器 `autograder.pyz` 中（自测用，只报告通过/失败与你的输出，不给期望输出）。
+- 测试你的解释器：`python3 autograder.pyz python3 starter/main.py`（单组：加 `--case=NNN`）。
+- 教师开发用完整版运行器：`python3 tests/run_tests.py python3 reference/main.py`（即 `make test`）。
 - `reference/` 是教师用模块化参考实现；学生从 `starter/` 骨架起步，骨架的使用说明见 `starter/README.md`。
 
 用例阶梯：001–003 基本求值（算术/比较/短路布尔）→ 004–005 控制流与函数 → 006 递归 → 007 列表 → 008 闭包 → 009 用语言本身定义 `map`/`filter` → 010 `let`/`begin` → 011 输出 → 012 谓词。

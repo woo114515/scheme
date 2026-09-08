@@ -15,13 +15,17 @@ Two assessment dimensions: functional correctness (12 acceptance case groups) an
 - `spec.md` — the mini-Scheme language spec, student-facing: prefix-notation primer, per-form evaluation order, cons-chain explanation, recursion intro, debugging guide, CLI/printing contracts, out-of-scope items. The single source of truth for what a passing student interpreter must do.
 - `reference/` — instructor's modular reference interpreter (Python 3). Public API per module mirrors the starter: `tokenizer.tokenize`, `parser.parse`/`sym`/`to_chain`, `environment.Env`/`Procedure`, `printer.to_str`, `stdlib.build_env`, `evaluator.evaluate`/`apply`, `main`. Must pass all acceptance tests.
 - `starter/` — the student skeleton: same module layout as `reference/`, bare `raise NotImplementedError` stubs **with no comments or docstrings** (deliberate: students derive requirements from `spec.md` and the tests, not in-code prompts), complete `main.py`, and `README.md` with the pipeline map and bottom-up completion order. **Keep the starter's module boundaries in sync with `reference/`** when the subset or architecture changes.
-- `tests/run_tests.py` — acceptance runner usable against any interpreter command; `tests/cases/*.scm` with matching `*.out` expected outputs.
+- `tests/run_tests.py` — dev acceptance runner (full diffs, `--dir` option) for the instructor; `tests/cases/*.scm` + `*.out` are the public cases.
+- `tests/cases_hidden/` — official grading cases (never shipped to students); grade with `make grade CMD="<interpreter-cmd>"`.
+- `tools/build_autograder.py` — builds `dist/autograder.pyz`, the only grader students receive: cases embedded base64-encoded, runs them via stdin, prints PASS/FAIL but **never the inputs or expected outputs** (anti-overfit). Known limits: the pyz is extractable and a determined student can pass a wrapper command to log the hidden stdin — treat it as deterrence, not security; official grading must use `cases_hidden` on the instructor's side.
 - When introducing a new top-level directory, document its purpose here.
 
 ## Build, test, and development commands
 
 - `make test` — run all acceptance tests against the reference interpreter (`python3 tests/run_tests.py python3 reference/main.py`).
-- `python3 tests/run_tests.py <interpreter-cmd>...` — run acceptance tests against any interpreter (e.g. `python3 starter/main.py` or a student submission). Each case runs in its own process with a fresh environment.
+- `make autograder` — rebuild `dist/autograder.pyz` after changing `tests/cases/` (dist/ is gitignored; rebuild before handing out).
+- `make grade CMD="<interpreter-cmd>"` — grade a submission against the hidden case set (`tests/run_tests.py --dir tests/cases_hidden`).
+- `python3 tests/run_tests.py <interpreter-cmd>...` — dev runner against any interpreter (e.g. `python3 starter/main.py` or a student submission). Each case runs in its own process with a fresh environment.
 - Interpreter CLI contract: read one or more `.scm` files (or stdin when given no args), evaluate each top-level expression in order, print each non-`None` result on its own line. See `spec.md` §2.
 
 ## Coding style & naming

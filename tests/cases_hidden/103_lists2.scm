@@ -1,0 +1,6 @@
+(car '(a b c))
+(cdr '(x y))
+(cons 0 '())
+(length '(1 2 3 4 5))
+(append '() '(9))
+(list (car '(7 8)) (cdr '(7 8)))

@@ -1,0 +1,5 @@
+(let ((x 10)) (let ((y (+ x 5))) (* x y)))
+(begin (define a 2) (define b 3) (+ a b))
+(if (< 3 4) (let ((z 9)) z) 'bad)
+(cond ((even? 5) 'a) ((odd? 5) 'b) (else 'c))
+(not (= 2 3))

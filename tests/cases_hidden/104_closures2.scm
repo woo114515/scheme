@@ -1,0 +1,7 @@
+(define (mul-by k) (lambda (x) (* k x)))
+(define triple (mul-by 3))
+(triple 11)
+((mul-by 100) 7)
+(define inc (lambda (x) (+ x 1)))
+(define (twice f) (lambda (x) (f (f x))))
+((twice inc) 5)

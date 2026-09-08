@@ -1,0 +1,6 @@
+(define (sos n) (if (= n 0) 0 (+ (* n n) (sos (- n 1)))))
+(sos 5)
+(define (pow2 n) (if (= n 0) 1 (* 2 (pow2 (- n 1)))))
+(pow2 10)
+(define (count n) (if (= n 0) '() (cons n (count (- n 1)))))
+(count 5)

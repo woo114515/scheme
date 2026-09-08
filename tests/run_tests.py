@@ -6,9 +6,10 @@ environment; its stdout must match tests/cases/NNN_name.out exactly.
 
 Usage:
     python3 tests/run_tests.py <interpreter-command>...
+    python3 tests/run_tests.py --dir <cases-dir> <interpreter-command>...
     # e.g.:
-    python3 tests/run_tests.py python3 reference/minischeme.py
-    python3 tests/run_tests.py python3 /path/to/student/interpreter.py
+    python3 tests/run_tests.py python3 reference/main.py
+    python3 tests/run_tests.py --dir tests/cases_hidden python3 reference/main.py
 """
 
 import difflib
@@ -20,19 +21,33 @@ CASES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cases")
 
 
 def main():
-    if len(sys.argv) < 2:
+    args = sys.argv[1:]
+    cases_dir = CASES_DIR
+    if args and args[0] == "--dir":
+        if len(args) < 3:
+            print(__doc__)
+            sys.exit(2)
+        cases_dir = args[1]
+        args = args[2:]
+    if len(args) < 2:
         print(__doc__)
         sys.exit(2)
-    cmd = sys.argv[1:]
+    cmd = args
     passed = 0
     failed = 0
-    for name in sorted(os.listdir(CASES_DIR)):
+    for name in sorted(os.listdir(cases_dir)):
         if not name.endswith(".scm"):
             continue
-        case_path = os.path.join(CASES_DIR, name)
+        case_path = os.path.join(cases_dir, name)
         with open(case_path[:-4] + ".out", encoding="utf-8") as fh:
             expected = fh.read()
-        proc = subprocess.run(cmd + [case_path], capture_output=True, text=True)
+        try:
+            proc = subprocess.run(cmd + [case_path], capture_output=True,
+                                  text=True, timeout=60)
+        except subprocess.TimeoutExpired:
+            failed += 1
+            print(f"  FAIL {name}    (timed out after 60s)")
+            continue
         actual = proc.stdout
         if proc.returncode == 0 and actual == expected:
             passed += 1
