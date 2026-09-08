@@ -7,4 +7,7 @@ autograder:
 grade:
 	python3 tests/run_tests.py --dir tests/cases_hidden $(CMD)
 
-.PHONY: test autograder grade
+handout: autograder
+	python3 tools/build_handout.py
+
+.PHONY: test autograder grade handout
