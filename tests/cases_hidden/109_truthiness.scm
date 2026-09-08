@@ -1,0 +1,8 @@
+(not 0)
+(not '())
+(and 1 2 3)
+(or #f 0 'x)
+(and #t 'yes)
+(or #f #f 'last)
+(if 0 'truthy 'falsy)
+(if '() 'truthy 'falsy)

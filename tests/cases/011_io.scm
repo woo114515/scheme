@@ -3,4 +3,5 @@
 (display "hello world")
 (newline)
 "hello"
+"a\nb"
 (display '(a (b c)))

@@ -1,0 +1,5 @@
+(cond (#t 'a 'b 'c))
+(cond (#f 'a) (else 1 2))
+(cond (#t))
+(if #f 'a)
+(if 5 'ok 'no)

@@ -19,7 +19,11 @@ def to_str(x, quotes=True):
     if isinstance(x, Symbol):
         return str(x)
     if isinstance(x, str):
-        return f'"{x}"' if quotes else x
+        if not quotes:
+            return x
+        escaped = (x.replace("\\", "\\\\").replace('"', '\\"')
+                    .replace("\n", "\\n").replace("\t", "\\t"))
+        return f'"{escaped}"'
     if isinstance(x, (int, float)):
         return str(x)
     if isinstance(x, tuple):
