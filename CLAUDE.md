@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Teaching/assessment project (as of 2026-09-08): students with no programming experience must complete a **mini-Scheme interpreter** by vibe coding (AI-assisted coding) in **~30 minutes**, to assess their vibe-coding ability. This repo is the instructor's workspace.
 
-The subset students must implement is defined in `spec.md` (modeled on CS61A's Scheme core, written for zero-programming-experience readers with heavy emphasis on prefix notation / evaluation order). The interpreter's target language is Scheme, but the host language is not fixed — any language satisfying the CLI contract in `spec.md` qualifies.
+The subset students must implement is defined in `spec.md` (modeled on CS61A's Scheme core, written for zero-programming-experience readers with heavy emphasis on prefix notation / evaluation order). The interpreter's target language is Scheme; the host language is fixed to Python 3 (per user, for simplicity).
 
 Two assessment dimensions: functional correctness (12 acceptance case groups) and **modular programming**. `reference/` is a modular Python 3 reference implementation (7 single-responsibility modules: tokenizer/parser/environment/printer/stdlib/evaluator/main — instructor-facing, not shown to students). `starter/` is the skeleton students receive: the same 7-module layout with contract docstrings (the vibe-coding prompts) and stub implementations, plus `main.py` pre-written.
 

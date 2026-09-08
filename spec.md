@@ -2,6 +2,8 @@
 
 > 本文档面向**完全没有编程经验**的学生，不需要任何编程基础。它是 mini-Scheme（一个从 Scheme 语言裁剪出的小子集，参考 CS61A 的 Scheme 核心）的完整语言手册。遇到看不懂的词，把它交给 AI 解释即可。
 
+实现语言规定为 **Python 3**（为简便统一）：学生从 `starter/` 骨架起步，把它补全为一个能通过验收测试的解释器（骨架用法见 `starter/README.md`）。
+
 ## 1. 最重要的语法规则：语序（前缀表达式）
 
 mini-Scheme 里几乎一切都是同一个形状：**一对圆括号，操作符写在最前面**。这叫"前缀表达式"。这和数学课上的写法正好相反。
@@ -310,7 +312,7 @@ mini-Scheme 里列表不是"装很多格子的盒子"，而是**一串点对**�
 ## 12. 验收测试
 
 - 用例位于 `tests/cases/`，每个 `NNN_name.scm` 配一个 `NNN_name.out`（期望输出，逐字节精确匹配）。
-- 测试你的解释器：`python3 tests/run_tests.py python3 starter/main.py`（或任意解释器命令）。
+- 测试你的解释器：`python3 tests/run_tests.py python3 starter/main.py`。
 - 测试教师参考实现：`make test`（即 `python3 tests/run_tests.py python3 reference/main.py`）。
 - `reference/` 是教师用模块化参考实现；学生从 `starter/` 骨架起步，骨架的使用说明见 `starter/README.md`。
 
