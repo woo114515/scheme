@@ -7,4 +7,10 @@ autograder:
 grade:
 	python3 tests/run_tests.py --dir tests/cases_hidden $(CMD)
 
-.PHONY: test autograder grade
+report:
+	python3 tools/grade.py $(SUB)
+
+report-batch:
+	python3 tools/grade.py --batch $(DIR)
+
+.PHONY: test autograder grade report report-batch
