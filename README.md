@@ -11,7 +11,7 @@
 - `Introduction.md` 是题干
 - `rubric.md` 是评分标准
 - `reference/` 下是一个参考答案
-- `starter/` 下是给学生的题面，包括样例，scheme 语言的规范（简化版），自动打分器
+- `starter/` 下是给学生的题面（独立仓库 [minischeme-starter](https://github.com/woo114515/minischeme-starter)），包括样例，scheme 语言的规范（简化版），自动打分器
 - `tests/` 下是一些对整个项目的测试样例
 - `tools/` 下是对学生答案的一键打分器。具体评估的内容见 `rubric.md`
 
